@@ -1,0 +1,1 @@
+export const BASE_URL = `https://quick-care-woad.vercel.app`;

@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Hospital {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  password      String
+  maxQueueSize  Int
+  maxBeds       Int
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  opdQueue      OPDQueue[]
+  bedBookings   BedBooking[]
+}
+
+model OPDQueue {
+  id          String    @id @default(cuid())
+  patientName String
+  age         Int
+  gender      String
+  phone       String
+  symptoms    String
+  status      String    @default("waiting") // waiting, in-progress, completed
+  queueNumber Int
+  hospitalId  String
+  hospital    Hospital  @relation(fields: [hospitalId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model BedBooking {
+  id          String    @id @default(cuid())
+  patientName String
+  age         Int
+  gender      String
+  phone       String
+  reason      String
+  status      String    @default("pending") // pending, approved, rejected
+  bedNumber   Int?
+  hospitalId  String
+  hospital    Hospital  @relation(fields: [hospitalId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
