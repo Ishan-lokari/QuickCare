@@ -7,7 +7,7 @@ QuickCare is a healthcare management platform that streamlines appointment booki
 - **Appointment Booking**: Allows patients to easily book appointments with doctors.
 - **Bed Booking**: Displays real-time bed availability and allows patients to book beds.
 - **Admin Dashboard**: Admins can manage hospitals, doctors, patient appointments, and bed availability.
-- **OTP Verification**: Ensures appointment and bed bookings are genuine.
+
 - **User-Friendly Interface**: Designed to provide a smooth experience for users and hospital administrators.
 - **Cloud Deployment**: Hosted through Cloudflare for reliable performance and accessibility.
 
